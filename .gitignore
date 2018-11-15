@@ -1,6 +1,47 @@
 # Compiled class file
 *.class
 
+######################
+# NetBeans
+######################
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+ 
+######################
+# IDEA
+######################
+*.iml
+*.ipr
+*.iws
+.idea/
+atlassian-ide-plugin.xml
+
+
+# Directories #
+build/
+bin/
+target/
+libs/
+tmp/
+node_modules/
+jaxws/jaxws-client/src/main/
+jaxws/jaxws-endpoint/src/main/webapp/WEB-INF/wsdl/
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.db
+rebel.xml
+
+# macOS
+.DS_STORE
+
 # Log file
 *.log
 
