@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,9 @@ public class ProfileEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    private String biography;
+    private ZonedDateTime dateJoined;
 
     public Long getId() {
         return id;
@@ -48,6 +52,34 @@ public class ProfileEntity implements Serializable {
     @Override
     public String toString() {
         return "entity.ProfileEntity[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the biography
+     */
+    public String getBiography() {
+        return biography;
+    }
+
+    /**
+     * @param biography the biography to set
+     */
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    /**
+     * @return the dateJoined
+     */
+    public ZonedDateTime getDateJoined() {
+        return dateJoined;
+    }
+
+    /**
+     * @param dateJoined the dateJoined to set
+     */
+    public void setDateJoined(ZonedDateTime dateJoined) {
+        this.dateJoined = dateJoined;
     }
     
 }
