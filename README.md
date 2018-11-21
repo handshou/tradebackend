@@ -8,6 +8,7 @@
 | :---: | :--- | :-- | :--: | :--- | :---------: |
 | User  | GET  |  /webresources/user/{userId}                   | Y  | Search(uId)      | Y |
 | User  | POST |  /webresources/user/                           | -  | Create user      | Y |
+| User  | PATCH|  /webresources/user/                           | -  | Edit(userId)     | Y |
 | User  | GET  |  /webresources/user/{userId}/store             | Y  | User store       | Y |
 | User  | GET  |  /webresources/user/store                      | Y  | My Store         | Y |
 | User  | GET  |  /webresources/user/{userId}/profile           | Y  | User profile     | Y |
@@ -15,7 +16,7 @@
 | Store | GET  |  /webresources/stores                          | Y  | All stores       | Y |
 | Store | GET  |  /webresources/stores/{storeId}                | Y  | Search(storeId)  | Y |
 | Item  | POST |  /webresources/item	                          | Y  | Create item      | Y |
-| Item  | POST |  /webresources/item/                           | Y  | Edit(itemId)     | Y |
+| Item  | PATCH|  /webresources/item/                           | Y  | Edit(itemId)     | Y |
 
 ## Admin Access
 
