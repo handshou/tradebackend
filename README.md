@@ -15,8 +15,8 @@
 | User  | GET  |  /webresources/user/profile                    | Y  | My profile       | Y |
 | Store | GET  |  /webresources/stores                          | Y  | All stores       | Y |
 | Store | GET  |  /webresources/stores/{storeId}                | Y  | Search(storeId)  | Y |
-| Item  | POST |  /webresources/item	                          | Y  | Create item      | Y |
-| Item  | PATCH|  /webresources/item/                           | Y  | Edit(itemId)     | Y |
+| Item  | POST |  /webresources/user/store/item                 | Y  | Create item      | Y |
+| Item  | PATCH|  /webresources/user/store/item                 | Y  | Edit(itemId)     | Y |
 
 ## Admin Access
 
