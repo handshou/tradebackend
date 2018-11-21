@@ -168,6 +168,37 @@ public class UserResource {
             return Response.status(401).entity(exception).build();
         }
     }
+    
+    @PATCH
+    @Path("/store/item")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateItem(ItemEntity i) throws NoResultException {
+        String username = getAuthHeader();
+        Command type = (username.equals("admin")) ? Command.ADMIN : Command.USER;
+
+        UserEntity u = usl.getUser(username, type);
+        
+        if (u != null) {
+            StoreEntity myStore = usl.getMyStore(u);
+            if (usl.updateItem(i)) {
+                Gson gson = new Gson();
+                String json = gson.toJson(usl.getItem(i.getId()));
+                return Response.status(200).entity(json).build();
+            } else {
+                JsonObject exception = Json.createObjectBuilder()
+                    .add("error", "Item does not exist")
+                    .build();
+            return Response.status(401).entity(exception).build();
+            }
+        } else {
+            
+            JsonObject exception = Json.createObjectBuilder()
+                    .add("error", "User does not exist")
+                    .build();
+            return Response.status(401).entity(exception).build();
+        }
+    }
 
     @GET
     @Path("/{userId}/store")
