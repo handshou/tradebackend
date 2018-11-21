@@ -1,7 +1,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -20,17 +22,38 @@ import javax.persistence.OneToOne;
 @Entity
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    /** 
+     * @return the numUsers
+     */
+    public static int getNumUsers() {
+        return numUsers;
+    }
+
+    /**
+     * @param aNumUsers the numUsers to set
+     */
+    public static void setNumUsers(int aNumUsers) {
+        numUsers = aNumUsers;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     private String name;
     private String username;
     private String password;
-    private ZonedDateTime dateJoined;
-    private boolean isDeactivated;
+    private boolean isActivated;
+    private static int numUsers = 0;
+    
+    @Temporal(TemporalType.DATE)
+    private Date created;
     
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
     private ProfileEntity userProfile;
+    
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
+    private CartEntity userCart;
     
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
     private StoreEntity userStore;
@@ -38,6 +61,9 @@ public class UserEntity implements Serializable {
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
     private final List<FeedbackEntity> userFeedback = 
             new ArrayList<>();
+    
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
+    private static final List<UserEntity> allUsers = new ArrayList<>();
     
     public Long getId() {
         return id;
@@ -115,33 +141,34 @@ public class UserEntity implements Serializable {
     }
 
     /**
-     * @return the dateJoined
-     */
-    public ZonedDateTime getDateJoined() {
-        return dateJoined;
-    }
-
-    /**
-     * @param dateJoined the dateJoined to set
-     */
-    public void setDateJoined(ZonedDateTime dateJoined) {
-        this.dateJoined = dateJoined;
-    }
-
-    /**
      * @return the isDeactivated
      */
     public boolean isDeactivated() {
-        return isDeactivated;
+        return !isActivated;
+    }
+    
+    /**
+     * @return the isActivated
+     */
+    public boolean isActivated() {
+        return isActivated;
     }
 
     /**
-     * @param isDeactivated the isDeactivated to set
+     * @param isActivated to set
      */
-    public void setDeactivated(boolean isDeactivated) {
-        this.isDeactivated = isDeactivated;
+    public void setActivated(boolean isActivated) {
+        this.isActivated = isActivated;
     }
 
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+    
     /**
      * @return the userProfile
      */
@@ -176,5 +203,104 @@ public class UserEntity implements Serializable {
     public List<FeedbackEntity> getUserFeedback() {
         return userFeedback;
     }
+
+    /**
+     * @return the allUsers
+     */
+//    public static List<UserEntity> getAllUsers() {
+//        return allUsers;
+//    }
+    
+//    public boolean addUser(UserEntity newUser) {
+//        if (allUsers.add(newUser)) {
+//            setNumUsers(allUsers.size());   
+//            return true;
+//        }
+//        return false;
+//    }
+    
+//    public boolean createUser(UserEntity newUser) {
+//        if (allUsers.add(newUser)) {
+//            setNumUsers(allUsers.size());   
+//            return true;
+//        }
+//        return false;
+//    }
+    
+    public boolean isSameUser(UserEntity user1, UserEntity user2) {
+        return user1.equals(user2);
+    }
+    
+//    public boolean isExistingUser(UserEntity userEntity) {
+//        return allUsers.contains(userEntity);
+//    }
+    
+//    public UserEntity getUser(int id) {
+//        for (UserEntity user : allUsers) {
+//            if (user.getId().equals((long) id)) {
+//                return user;
+//            }
+//        }
+//        return null;
+//    }
+    
+//    public UserEntity getUser(String username) {
+//        for (UserEntity user : allUsers) {
+//            if (user.getUsername().equals(username)) {
+//                return user;
+//            }
+//        }
+//        return null;
+//    }
+    
+    
+//    public StoreEntity getUserStore(UserEntity user) {
+//        for (UserEntity u : UserEntity.getAllUsers()) {
+//            if (u.equals(user)) {
+//                return user.getUserStore();
+//            }
+//        }
+//        return null;
+//    }
+
+    /**
+     * @return the userCart
+     */
+    public CartEntity getUserCart() {
+        return userCart;
+    }
+
+    /**
+     * @param userCart the userCart to set
+     */
+    public void setUserCart(CartEntity userCart) {
+        this.userCart = userCart;
+    }
+    
+    public boolean editUser(UserEntity newUser) {
+        if (newUser == null)
+            return false;
+        if (isSameUser(newUser, this)) {
+            if (newUser.isActivated() != this.isActivated())
+                this.setActivated(newUser.isActivated());
+            if (newUser.getName() != null)
+                this.setName(newUser.getName());
+            if (newUser.getUsername() != null)
+                this.setUsername(newUser.getUsername());
+            if (newUser.getPassword() != null)
+                this.setPassword(newUser.getPassword());
+            return true;
+        }
+        return false;
+    }
+    
+//    public boolean isExistingUsername(String username) {
+//        for (UserEntity u : allUsers) {
+//            if (u.getUsername().toLowerCase().equals(username.toLowerCase())) {
+//                return true;
+//            }                
+//        }
+//        return false;
+//    }
     
 }
