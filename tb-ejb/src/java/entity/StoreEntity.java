@@ -1,7 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -19,20 +17,30 @@ import javax.persistence.OneToOne;
 @Entity
 public class StoreEntity implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    /**
+     * @return the numAllStores
+     */
+    public static int getNumAllStores() {
+        return numAllStores;
+    }
+
+    /**
+     * @param aNumAllStores the numAllStores to set
+     */
+    public static void setNumAllStores(int aNumAllStores) {
+        numAllStores = aNumAllStores;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
-    private final List<ItemEntity> items = new ArrayList<>();
-    
-    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
-    private UserEntity owner;
-    
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)  
-    private final List<StoreEntity> allStores = new ArrayList<>();
+    private List<ItemEntity> items;
 
     private static int numAllStores = 0;
+    
+    private long userId = 0;
     
     public Long getId() {
         return id;
@@ -47,67 +55,6 @@ public class StoreEntity implements Serializable {
      */
     public List<ItemEntity> getItems() {
         return items;
-    }
-
-    /**
-     * @return the owner
-     */
-    public UserEntity getOwner() {
-        return owner;
-    }
-
-    /**
-     * @param owner the owner to set
-     */
-    public void setOwner(UserEntity owner) {
-        this.owner = owner;
-    }
-
-    /**
-     * @return the allStores
-     */
-    public List<StoreEntity> getAllStores() {
-        return allStores;
-    }
-    
-    public List<StoreEntity> getStores(int startId, int endId) {
-        if (startId <= 0)
-            return null;
-        if (startId > endId || numAllStores == 0)
-            return allStores;
-        return allStores.stream()
-                .filter(store -> 
-                        store.getId() >= startId && store.getId() <= endId)
-                .collect(null);
-    }
-    
-    /**
-     * @param appendStore refers to reference of store to be added
-     * @return true if store is added
-     */
-    public boolean addStore(StoreEntity appendStore) {
-        if (!allStores.add(appendStore)) {
-            return false;
-        }
-        numAllStores = allStores.size();
-        return true;
-    }
-
-    public boolean removeStore(StoreEntity removeStore) {
-        if (!allStores.contains(removeStore)) {
-            return false;
-        }
-        allStores.remove(removeStore);
-        numAllStores = allStores.size();
-        return true;
-    }
-    
-    public StoreEntity getUserStore(UserEntity user) {
-        return allStores.stream()
-                .filter(store -> store.getOwner().equals(user))
-                .distinct()
-                .findFirst()
-                .get();
     }
     
     @Override
@@ -133,6 +80,20 @@ public class StoreEntity implements Serializable {
     @Override
     public String toString() {
         return "entity.StoreEntity[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the userId
+     */
+    public long getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
     
 }

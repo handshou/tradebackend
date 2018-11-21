@@ -12,10 +12,17 @@ import javax.persistence.Id;
  */
 @Entity
 public class ItemEntity implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private long storeId;
+    private long orderId;
+    private String name;
+    private String description;
+    private String category;
+    private double price;
 
     public Long getId() {
         return id;
@@ -48,6 +55,105 @@ public class ItemEntity implements Serializable {
     @Override
     public String toString() {
         return "entity.ItemEntity[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the category
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * @param category the category to set
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * @return the price
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    public void updateItem(ItemEntity i) {
+        if (i.getName() != null) {
+            this.name = i.getName();
+        }
+        if (i.getDescription() != null) {
+            this.description = i.getDescription();
+        }
+        if (i.getCategory() != null) {
+            this.category = i.getCategory();
+        }
+        if (i.getPrice() != 0) {
+            this.price = i.getPrice();
+        }
+    }
+
+    /**
+     * @return the storeId
+     */
+    public long getStoreId() {
+        return storeId;
+    }
+
+    /**
+     * @param storeId the storeId to set
+     */
+    public void setStoreId(long storeId) {
+        this.storeId = storeId;
+    }
+
+    /**
+     * @return the orderId
+     */
+    public long getOrderId() {
+        return orderId;
+    }
+
+    /**
+     * @param orderId the orderId to set
+     */
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
     }
     
 }
