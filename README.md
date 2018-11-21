@@ -10,9 +10,9 @@
 | User  | POST |  /webresources/user/                           | -  | Create user      | Y |
 | User  | PATCH|  /webresources/user/                           | -  | Edit(userId)     | Y |
 | User  | GET  |  /webresources/user/{userId}/store             | Y  | User store       | Y |
-| User  | GET  |  /webresources/user/store                      | Y  | My Store         | Y |
+| User  | GET  |  /webresources/user/store                      | Y  | My store         | Y |
 | User  | GET  |  /webresources/user/{userId}/profile           | Y  | User profile     | Y |
-| User  | GET  |  /webresources/user/profile                    | Y  | My Profile       | Y |
+| User  | GET  |  /webresources/user/profile                    | Y  | My profile       | Y |
 | Store | GET  |  /webresources/stores                          | Y  | All stores       | Y |
 | Store | GET  |  /webresources/stores/{storeId}                | Y  | Search(storeId)  | Y |
 | Item  | POST |  /webresources/item	                          | Y  | Create item      | Y |
