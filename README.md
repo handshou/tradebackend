@@ -2,7 +2,8 @@
 
 > https://stackoverflow.com/questions/26212844/how-to-read-authorization-header-in-jax-rs-service
 
-User Access
+## User Access
+
 | Type  | REST | URL | User | Desc | Implemented |
 | :---: | :--- | :-- | :--: | :--- | :---------: |
 | User  | GET  |  /webresources/user/{userId}                   | Y  | Search(uId)      | Y |
@@ -13,10 +14,11 @@ User Access
 | User  | GET  |  /webresources/user/profile                    | Y  | My Profile       | Y |
 | Store | GET  |  /webresources/stores                          | Y  | All stores       | Y |
 | Store | GET  |  /webresources/stores/{storeId}                | Y  | Search(storeId)  | Y |
-| Item  | POST |  /webresources/item	                        |    | Create item      | Y |
-| Item  | POST |  /webresources/item/                           |    | Edit(itemId)     | Y |
+| Item  | POST |  /webresources/item	                          | Y  | Create item      | Y |
+| Item  | POST |  /webresources/item/                           | Y  | Edit(itemId)     | Y |
 
-Admin Access
+## Admin Access
+
 | Type  | REST | URL | Admn | Desc | Implemented |
 | :---: | :--- | :-- | :--: | :--- | :---------: |
 | Users | GET  |  /webresources/users/{username}                | Y  | Search(keyword)  | Y |
