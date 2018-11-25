@@ -11,6 +11,7 @@ User Access
 | User  | GET  |  /webresources/user/store                      | Y  | My Store         | Y |
 | User  | GET  |  /webresources/user/{userId}/profile           | Y  | User profile     | Y |
 | User  | GET  |  /webresources/user/profile                    | Y  | My Profile       | Y |
+| User  | GET  |  /webresources/user/login                      | -  | Login            | Y |
 | Store | GET  |  /webresources/stores                          | Y  | All stores       | Y |
 | Store | GET  |  /webresources/stores/{storeId}                | Y  | Search(storeId)  | Y |
 | Item  | POST |  /webresources/item	                        |    | Create item      | Y |
