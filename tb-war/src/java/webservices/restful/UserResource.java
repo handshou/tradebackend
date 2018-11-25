@@ -199,7 +199,6 @@ public class UserResource {
             return Response.status(401).entity(exception).build();
         }
     }
->>>>>>> 7559028b2ef1f8a780939493af5f5b5737b1cddb
 
     @GET
     @Path("/{userId}/store")

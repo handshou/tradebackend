@@ -41,3 +41,5 @@ public interface UserSessionLocal {
     public boolean editUser(UserEntity u);
     public boolean isExistingUsername(String username);
     public String getUsername(long uId);
+
+}
