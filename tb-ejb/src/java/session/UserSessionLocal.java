@@ -41,6 +41,10 @@ public interface UserSessionLocal {
     public boolean editUser(UserEntity u);
     public boolean isExistingUsername(String username);
     public String getUsername(long uId);
+<<<<<<< HEAD
+
+=======
 //    public boolean addItemToStore(ItemEntity i, StoreEntity u);
 //    public boolean editItem(ItemEntity i);
+>>>>>>> cff2b8dc451a3b31fd0a129c3ce236a25c4b2c69
 }

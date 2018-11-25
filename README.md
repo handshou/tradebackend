@@ -13,6 +13,7 @@
 | User  | GET  |  /webresources/user/store                      | Y  | My store         | Y |
 | User  | GET  |  /webresources/user/{userId}/profile           | Y  | User profile     | Y |
 | User  | GET  |  /webresources/user/profile                    | Y  | My profile       | Y |
+| User  | GET  |  /webresources/user/login                      | -  | Login            | Y |
 | Store | GET  |  /webresources/stores                          | Y  | All stores       | Y |
 | Store | GET  |  /webresources/stores/{storeId}                | Y  | Search(storeId)  | Y |
 | Item  | POST |  /webresources/user/store/item                 | Y  | Create item      | Y |
