@@ -167,6 +167,9 @@ public class UserSession implements UserSessionLocal {
         em.persist(newUser);
         em.persist(store);
         
+        System.out.println("### creating user ###" + "\n" + username + "\n" + password);
+
+        
         try {
             store.setUserId(newUser.getId());
             newUser.setName(name);
