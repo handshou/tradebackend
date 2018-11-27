@@ -22,7 +22,7 @@ These are a list of supported features.
 | Feature | Description | Progress |
 | :------ | ----------- | :------: |
 | *Login* | You can hardcode the username and password to be “admin” and “admin” but the server should maintain session information to ensure that the user is logged in before they are allowed to perform admin actions. |
-| *Logout* | - |
+| *Logout* | - | ✓ |
 | *View all users* | Sellers & buyers |
 | *Activate user* | - |
 | *Deactivate user* | Deactivated user should not be able to log into the system. |
@@ -30,9 +30,9 @@ These are a list of supported features.
 ### Seller
 | Feature | Description | Progress |
 | :------ | ----------- | :------: |
-| *Register* | You should decide on the set of attributes that is suitable for sellers/buyers. |
-| *Login* | Unlike admin user, you should not hardcode the login details for the sellers and buyers. |
-| *Logout* | - |
+| *Register* | You should decide on the set of attributes that is suitable for sellers/buyers. | ✓ |
+| *Login* | Unlike admin user, you should not hardcode the login details for the sellers and buyers. | ✓ |
+| *Logout* | - | ✓ |
 | *Add item* | Item should have common fields such as: name, description, quantity, category, price, etc. |
 | *List/search seller items* | The system should allow sellers to see their list of items. It should also allow them to search/filter by keywords, etc. |
 | *Delete item* | Seller should not be able to delete an item if it is already associated with an order. To logical “delete” an item, seller can set the quantity to 0. |
@@ -45,9 +45,9 @@ These are a list of supported features.
 | Feature | Description | Progress |
 | :------ | ----------- | :------: |
 | *Search items* | Users do not need to be logged in in order to search for items, but they have to be logged in before they can add something to the cart. System should allow users to search by keywords, category, availability and should display item details (e.g. stock level, etc). |
-| *Register* | - |
-| *Login* | - |
-| *Logout* | - |
+| *Register* | - | ✓ |
+| *Login* | - | ✓ |
+| *Logout* | - | ✓ |
 | *Add items to cart* | - |
 | *Check out cart* | While you should take in credit card details, you do not need to integrate with payment gateway and can assume that the payment will always be successful. |
 | *View all orders* | Show the list of all the orders of the users. |
